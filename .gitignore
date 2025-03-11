@@ -1,0 +1,39 @@
+# Python
+*.pyc
+*.pyo
+__pycache__/
+*.pyd
+*.pdb
+*.egg-info/
+
+# Virtual Environment
+dmvenv/
+env/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# IDE Settings
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# MacOS System Files
+.DS_Store
+
+# Logs and Debug Files
+*.log
+logs/
+
+# Compiled Files
+*.so
+*.dll
+*.dylib
+*.bin
+
+# Results
+results/
