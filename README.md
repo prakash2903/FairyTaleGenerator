@@ -1,11 +1,8 @@
 # 📚 FairyTale Story Generator
 
-Create Fairy tale stories using an **LSTM-based language model** enhanced with **Top-p Sampling**, **Temperature Control**.
-
----
-
-## 🚀 Project Overview
 This project builds a powerful **LSTM model** using TensorFlow/Keras to generate imaginative fairy tales inspired by the works of **Hans Christian Andersen**. The project uses text generation techniques to produce diverse and coherent narratives.
+
+<img src= "https://github.com/prakash2903/christmas-hackathon/blob/main/src/index.png" height = 500, width = 525, align=left>
 
 ---
 
