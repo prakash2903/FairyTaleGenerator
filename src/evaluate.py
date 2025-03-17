@@ -57,12 +57,16 @@ def generate_text(seed_text, max_words=100, temperature=0.7, top_k=10):
 
 
 def calculate_bleu_score(reference_text, generated_text):
-    # Skipping metadata if exists
+    # Skipping Metadata if exists.
     story_start = re.search(r'(?i)contents(.*?)a story', reference_text, re.DOTALL)
     if story_start:
         reference_text = reference_text[story_start.end():]
 
-    reference_sentences = reference_text.split('.')[:5]
+    reference_sentences = reference_text.split('.')
+    
+    sample_size = min(20, len(reference_sentences))
+    reference_sentences = random.sample(reference_sentences, sample_size)
+    
     reference_tokens = [sentence.strip().split() for sentence in reference_sentences]
     generated_tokens = generated_text.split()
 
@@ -73,16 +77,28 @@ def calculate_bleu_score(reference_text, generated_text):
 def calculate_rouge_score(reference_text, generated_text):
     rouge = Rouge()
     try:
-        scores = rouge.get_scores(generated_text, reference_text[:500])
+        sampled_reference_text = reference_text[1000:2000]
+        scores = rouge.get_scores(generated_text, sampled_reference_text)
         return scores[0]['rouge-l']['f']
     except Exception:
         return 0.0
     
+from nltk.translate.meteor_score import meteor_score
 
+def calculate_meteor_score(reference_text, generated_text):
+    reference_sentences = reference_text.split('.')[:10]
+    reference_tokens = [sentence.strip().split() for sentence in reference_sentences]
+
+    generated_tokens = generated_text.split()
+    
+    score = meteor_score(reference_tokens, generated_tokens)
+    return score
+
+    
 if __name__ == "__main__":
-    starting_sequence = "once upon a time in a faraway kingdom"
+    starting_sequence = "once upon a time"
 
-    generated_story = generate_text(starting_sequence, max_words=100, temperature=0.7, top_k=10)
+    generated_story = generate_text(starting_sequence, max_words=75, temperature=0.7, top_k=10)
     print("\nGenerated Story:\n")
     print(generated_story)
 
@@ -91,6 +107,8 @@ if __name__ == "__main__":
 
     bleu_score = calculate_bleu_score(reference_text, generated_story)
     rouge_score = calculate_rouge_score(reference_text, generated_story)
+    meteor_score = calculate_meteor_score(reference_text, generated_story)
 
     print(f"\nBLEU Score: {bleu_score:.4f}")
     print(f"ROUGE Score: {rouge_score:.4f}")
+    print(f"Meteor Score: {meteor_score:.4f}")
