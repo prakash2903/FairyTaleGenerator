@@ -5,6 +5,7 @@ import pickle
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from nltk.translate.bleu_score import sentence_bleu
+from nltk.translate.meteor_score import meteor_score
 from rouge import Rouge
 
 
@@ -83,7 +84,6 @@ def calculate_rouge_score(reference_text, generated_text):
     except Exception:
         return 0.0
     
-from nltk.translate.meteor_score import meteor_score
 
 def calculate_meteor_score(reference_text, generated_text):
     reference_sentences = reference_text.split('.')[:10]
