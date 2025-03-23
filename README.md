@@ -1,14 +1,14 @@
 # FairyTale Story Generator
 
-This project builds a powerful **LSTM model** using TensorFlow/Keras to generate imaginative fairy tales inspired by the works of **Hans Christian Andersen**. The project uses text generation techniques to produce diverse and coherent narratives.
+A **LSTM model** using TensorFlow/Keras to generate imaginative fairy tales inspired by the works of **Hans Christian Andersen**. This uses text generation techniques to produce diverse narratives.
 
 <img src= "https://github.com/prakash2903/FairyTaleGenerator/blob/main/results/UI.png">
 
 ---
 
 ## ✨ Features
-✅ Interactive **Streamlit Web App** for seamless user experience.  
-✅ Generate creative and engaging stories using a custom **LSTM Model**.  
+✅ Interactive **Streamlit Web App**.  
+✅ Generate creative and engaging stories using **LSTM Model**.  
 ✅ Tune creativity using **Temperature Control** and **Top-p Sampling**.  
 ✅ Evaluate generated text quality with **BLEU** and **ROUGE** scores.
 
